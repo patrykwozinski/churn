@@ -18,7 +18,7 @@ defmodule Churn.Execution do
     |> Task.async_stream(fn file ->
       Processor.process(file, commit_since)
     end)
-    |> Enum.to_list()
+    |> Stream.run()
 
     :ok
   end
