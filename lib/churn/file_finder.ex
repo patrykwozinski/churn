@@ -11,6 +11,7 @@ defmodule Churn.FileFinder do
       |> Path.join("**")
       |> Path.join("*.{#{extensions}}")
       |> Path.wildcard()
+      |> Enum.uniq()
     end)
   end
 end
