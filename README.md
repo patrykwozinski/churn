@@ -1,6 +1,6 @@
 # Churn
 
-**TODO: Add description**
+**Help discover a good refactoring candidates using cyclomatic complexity and frequency of editing files**
 
 ## Installation
 
