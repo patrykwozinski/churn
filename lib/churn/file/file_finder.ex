@@ -15,8 +15,6 @@ defmodule Churn.File.Finder do
       |> Path.wildcard()
       |> Enum.uniq()
     end)
-    |> Enum.map(fn file_path ->
-      File.build(file_path)
-    end)
+    |> Enum.map(&File.build/1)
   end
 end

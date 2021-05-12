@@ -12,7 +12,7 @@ defmodule Churn.Execution do
         file_extensions: exts,
         files_to_ignore: files_to_ignore
       }) do
-      Finder.find(dirs_to_scan, exts, files_to_ignore)
+    Finder.find(dirs_to_scan, exts, files_to_ignore)
 
     :ok
   end
