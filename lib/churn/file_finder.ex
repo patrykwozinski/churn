@@ -6,7 +6,7 @@ defmodule Churn.FileFinder do
     extensions = Enum.join(extensions, ",")
 
     paths
-    |> Enum.map(fn path ->
+    |> Enum.flat_map(fn path ->
       path
       |> Path.join("**")
       |> Path.join("*.{#{extensions}}")
