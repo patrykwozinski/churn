@@ -9,9 +9,9 @@ defmodule Churn.Configuration do
   typedstruct enforce: true do
     field(:min_score_to_show, pos_integer())
     field(:commit_since, String.t())
-    field(:directories_to_scan, list(String.t()))
-    field(:file_extensions, list(String.t()))
-    field(:files_to_ignore, list(String.t()))
+    field(:directories_to_scan, [String.t()])
+    field(:file_extensions, [String.t()])
+    field(:files_to_ignore, [String.t()])
   end
 
   @default_minimum_score_to_show 0.1
@@ -20,7 +20,7 @@ defmodule Churn.Configuration do
   @default_file_extensions ["ex"]
   @default_files_to_ignore []
 
-  @spec build(list(any())) :: t()
+  @spec build([any()]) :: t()
   def build(args \\ []) when is_list(args) do
     min_score_to_show = Keyword.get(args, :min_score_to_show, @default_minimum_score_to_show)
     commit_since = Keyword.get(args, :commit_since, @default_commit_since)
