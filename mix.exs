@@ -8,6 +8,8 @@ defmodule Churn.MixProject do
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
+      package: package(),
+      docs: docs(),
       dialyzer: [
         plt_add_deps: :apps_direct,
         plt_add_apps: [],
@@ -34,6 +36,14 @@ defmodule Churn.MixProject do
     [
       main: "readme",
       extras: ["README.md"]
+    ]
+  end
+
+  defp package() do
+    [
+      files: ~w(lib .formatter.exs mix.exs README*),
+      licenses: ["MIT"],
+      links: %{"GitHub" => "https://github.com/patrykwozinski/churn"}
     ]
   end
 end
