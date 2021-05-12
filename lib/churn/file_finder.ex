@@ -11,7 +11,6 @@ defmodule Churn.FileFinder do
       |> Path.join("**")
       |> Path.join("*.{#{extensions}}")
       |> Path.wildcard()
-      |> IO.inspect()
     end)
   end
 end
