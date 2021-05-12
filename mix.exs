@@ -30,7 +30,7 @@ defmodule Churn.MixProject do
   defp deps do
     [
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
-      {:typed_struct, "~> 0.2"},
+      {:typed_struct, "~> 0.1"},
       {:table_rex, "~> 3.1.1"},
       {:dialyxir, "~> 1.1", only: [:dev], runtime: false},
       {:credo, "~> 1.5", only: [:dev, :test], runtime: false}
