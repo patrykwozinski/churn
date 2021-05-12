@@ -5,21 +5,20 @@ defmodule Churn.Processor.TimesEdited do
 
   @spec calculate(File.t(), String.t()) :: pos_integer()
   def calculate(%File{path: file_path}, commits_since) do
-    [
-      "git",
-      "-C",
-      Path.dirname(file_path),
+    System.cmd("git", [
       "rev-list",
       "--since",
-      commits_since,
+      "\"#{commits_since}\"",
       "--no-merges",
       "--count",
       "HEAD",
-      Path.basename(file_path)
-    ]
-    |> Enum.join(" ")
-    |> System.cmd([])
-
-    0
+      file_path
+    ])
+    |> elem(0)
+    |> Integer.parse()
+    |> case do
+      {number, "\n"} when is_integer(number) -> number
+      _ -> 0
+    end
   end
 end
