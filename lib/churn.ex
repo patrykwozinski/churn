@@ -3,9 +3,12 @@ defmodule Churn do
   Churn is a good refactoring candidates finder for your version-control system.
   """
 
-  def run(_args) do
-    IO.puts("Hello World")
+  alias Churn.Configuration
+  alias Churn.Execution
 
-    :ok
+  def run(args) do
+    args
+    |> Configuration.build()
+    |> Execution.run()
   end
 end
