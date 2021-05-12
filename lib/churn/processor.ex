@@ -2,10 +2,10 @@ defmodule Churn.Processor do
   @moduledoc false
 
   alias Churn.File
-  alias Churn.Processor.Response
+  alias Churn.Processor.Result
 
-  @spec process(File.t()) :: {:ok, Response.t()}
-  def process(%File{} = _file) do
-    {:ok, Response.build(1, 0)}
+  @spec process(File.t()) :: {:ok, Result.t()}
+  def process(%File{} = file) do
+    {:ok, Result.build(file, 1, 0)}
   end
 end
