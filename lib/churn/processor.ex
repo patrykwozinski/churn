@@ -9,7 +9,7 @@ defmodule Churn.Processor do
   @spec process(File.t(), String.t()) :: {:ok, Result.t()}
   def process(%File{} = file, commit_since) do
     cyclomatic_complexity = CyclomaticComplexity.calculate(file)
-    times_changed = TimesEdited.calculate(file, commit_since)
+    {:ok, times_changed} = TimesEdited.calculate(file, commit_since)
 
     {:ok, Result.build(file, cyclomatic_complexity, times_changed)}
   end
