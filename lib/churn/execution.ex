@@ -13,6 +13,9 @@ defmodule Churn.Execution do
         files_to_ignore: files_to_ignore
       }) do
     Finder.find(dirs_to_scan, exts, files_to_ignore)
+    |> Task.async_stream(fn file ->
+      nil
+    end)
 
     :ok
   end
