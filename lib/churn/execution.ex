@@ -15,9 +15,10 @@ defmodule Churn.Execution do
         commit_since: commit_since
       }) do
     Finder.find(dirs_to_scan, exts, files_to_ignore)
-    |> Task.async_stream(fn file ->
+    |> Stream.map(fn file ->
       Processor.process(file, commit_since)
     end)
+    |> Stream.filter(fn {status, _result} -> status == :ok end)
     |> Stream.run()
 
     :ok
