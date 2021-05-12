@@ -14,7 +14,7 @@ defmodule Churn.MixProject do
       docs: docs(),
       dialyzer: [
         plt_add_deps: :apps_direct,
-        plt_add_apps: [],
+        plt_add_apps: [:mix],
         plt_ignore_apps: [:logger]
       ]
     ]
