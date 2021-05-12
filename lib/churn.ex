@@ -3,7 +3,7 @@ defmodule Churn do
   Churn is a good refactoring candidates finder for your version-control system.
   """
 
-  def run do
+  def run(args) do
     :ok
   end
 end
