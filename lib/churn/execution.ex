@@ -6,6 +6,7 @@ defmodule Churn.Execution do
   alias Churn.Configuration
   alias Churn.File.Finder
   alias Churn.Processor
+  alias Churn.Processor.Result
 
   @spec run(Configuration.t()) :: :ok
   def run(%Configuration{
@@ -19,7 +20,9 @@ defmodule Churn.Execution do
       Processor.process(file, commit_since)
     end)
     |> Stream.filter(fn {status, _result} -> status == :ok end)
-    |> Stream.run()
+    |> Stream.map(fn {:ok, result} -> result end)
+    |> Enum.to_list()
+    |> Enum.sort_by(&Result.get_priority/1)
 
     :ok
   end

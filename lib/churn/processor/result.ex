@@ -15,4 +15,8 @@ defmodule Churn.Processor.Result do
   def build(file, complexity, times_changed) do
     %__MODULE__{file: file, complexity: complexity, times_changed: times_changed}
   end
+
+  @spec get_priority(t()) :: pos_integer()
+  def get_priority(%__MODULE__{complexity: complexity, times_changed: times_changed}),
+    do: complexity * times_changed
 end
