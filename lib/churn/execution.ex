@@ -15,14 +15,30 @@ defmodule Churn.Execution do
         files_to_ignore: files_to_ignore,
         commit_since: commit_since
       }) do
-    Finder.find(dirs_to_scan, exts, files_to_ignore)
-    |> Stream.map(fn file ->
-      Processor.process(file, commit_since)
-    end)
-    |> Stream.filter(fn {status, _result} -> status == :ok end)
-    |> Stream.map(fn {:ok, result} -> result end)
-    |> Enum.to_list()
+    results =
+      Finder.find(dirs_to_scan, exts, files_to_ignore)
+      |> Stream.map(fn file ->
+        Processor.process(file, commit_since)
+      end)
+      |> Stream.filter(fn {status, _result} -> status == :ok end)
+      |> Stream.map(fn {:ok, result} -> result end)
+      |> Enum.to_list()
+
+    max_times_changed =
+      results
+      |> Enum.map(& &1.times_changed)
+      |> Enum.max()
+
+    max_complexity =
+      results
+      |> Enum.map(& &1.complexity)
+      |> Enum.max()
+
+    results
     |> Enum.sort_by(&Result.get_priority/1, :desc)
+    |> Enum.map(fn result ->
+      Result.with_score(result, max_times_changed, max_complexity)
+    end)
 
     :ok
   end
