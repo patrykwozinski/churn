@@ -22,13 +22,14 @@ defmodule Churn.MixProject do
 
   def application do
     [
-      extra_applications: [:logger, :typed_struct]
+      extra_applications: [:logger, :typed_struct, :table_rex]
     ]
   end
 
   defp deps do
     [
       {:typed_struct, "~> 0.2"},
+      {:table_rex, "~> 3.1.1"},
       {:dialyxir, "~> 1.1", only: [:dev], runtime: false},
       {:credo, "~> 1.5", only: [:dev, :test], runtime: false}
     ]
