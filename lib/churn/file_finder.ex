@@ -1,7 +1,7 @@
 defmodule Churn.FileFinder do
   @moduledoc false
 
-  @spec find(list(String.t()), list(String.t()), list(String.t())) :: list(any())
+  @spec find(list(String.t()), list(String.t()), list(String.t())) :: list(String.t())
   def find(paths, extensions, _files_to_ignore) do
     extensions = Enum.join(extensions, ",")
 
