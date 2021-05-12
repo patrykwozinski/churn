@@ -1,8 +1,7 @@
 defmodule ChurnTest do
   use ExUnit.Case
-  doctest Churn
 
-  test "greets the world" do
-    assert Churn.hello() == :world
+  test "it works" do
+    assert Churn.run() == :ok
   end
 end

@@ -4,6 +4,6 @@ defmodule Churn do
   """
 
   def run do
-    :world
+    :ok
   end
 end
