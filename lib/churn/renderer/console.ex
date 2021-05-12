@@ -14,5 +14,6 @@ defmodule Churn.Renderer.Console do
       [result.file.path, result.times_changed, result.complexity, result.score]
     end)
     |> TableRex.quick_render!(header, @title)
+    |> IO.puts()
   end
 end

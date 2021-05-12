@@ -7,13 +7,15 @@ defmodule Churn.Execution do
   alias Churn.File.Finder
   alias Churn.Processor
   alias Churn.Processor.Result
+  alias Churn.Renderer
 
   @spec run(Configuration.t()) :: :ok
   def run(%Configuration{
         directories_to_scan: dirs_to_scan,
         file_extensions: exts,
         files_to_ignore: files_to_ignore,
-        commit_since: commit_since
+        commit_since: commit_since,
+        output_type: output_type
       }) do
     results =
       Finder.find(dirs_to_scan, exts, files_to_ignore)
@@ -39,6 +41,7 @@ defmodule Churn.Execution do
     |> Enum.map(fn result ->
       Result.with_score(result, max_times_changed, max_complexity)
     end)
+    |> Renderer.render(output_type)
 
     :ok
   end
