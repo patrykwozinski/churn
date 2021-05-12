@@ -1,18 +1,9 @@
 defmodule Churn do
   @moduledoc """
-  Documentation for `Churn`.
+  Churn is a good refactoring candidates finder for your version-control system.
   """
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Churn.hello()
-      :world
-
-  """
-  def hello do
+  def run do
     :world
   end
 end
