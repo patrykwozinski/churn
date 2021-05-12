@@ -22,7 +22,7 @@ defmodule Churn.Execution do
     |> Stream.filter(fn {status, _result} -> status == :ok end)
     |> Stream.map(fn {:ok, result} -> result end)
     |> Enum.to_list()
-    |> Enum.sort_by(&Result.get_priority/1)
+    |> Enum.sort_by(&Result.get_priority/1, :desc)
 
     :ok
   end
