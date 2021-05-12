@@ -16,8 +16,8 @@ defmodule Churn.Configuration do
 
   @default_minimum_score_to_show 0.1
   @default_commit_since "1 year ago"
-  @default_directories_to_scan []
-  @default_file_extensions [".ex"]
+  @default_directories_to_scan ["."]
+  @default_file_extensions ["ex"]
   @default_files_to_ignore []
 
   @spec build(list(any())) :: t()
