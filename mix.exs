@@ -6,6 +6,7 @@ defmodule Churn.MixProject do
   def project do
     [
       app: :churn,
+      description: "Churn supports finding refactoring candidates in your code",
       version: @version,
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
