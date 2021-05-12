@@ -5,7 +5,7 @@ defmodule Mix.Tasks.Churn do
   @moduledoc @shortdoc
 
   @doc false
-  def run(_args) do
-    :ok
+  def run(args) do
+    Churn.CLI.main(args)
   end
 end
