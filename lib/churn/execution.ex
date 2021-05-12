@@ -28,7 +28,11 @@ defmodule Churn.Execution do
     |> parse(config)
   end
 
-  defp parse(results, %Configuration{output_type: output_type, min_score_to_show: min_score_to_show}) when length(results) > 0 do
+  defp parse(results, %Configuration{
+         output_type: output_type,
+         min_score_to_show: min_score_to_show
+       })
+       when length(results) > 0 do
     max_times_changed =
       results
       |> Enum.map(& &1.times_changed)
