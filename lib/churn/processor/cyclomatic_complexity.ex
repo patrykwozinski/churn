@@ -71,7 +71,7 @@ defmodule Churn.Processor.CyclomaticComplexity do
          when is_list(arguments) do
       block_cc =
         arguments
-        |> Credo.Code.Block.do_block_for!()
+        |> do_block_for!()
         |> do_block_complexity(op)
 
       {ast, complexity + block_cc}
@@ -98,4 +98,50 @@ defmodule Churn.Processor.CyclomaticComplexity do
 
     accumulated
   end
+
+  def do_block?(ast) do
+    case do_block_for(ast) do
+      {:ok, _block} ->
+        true
+
+      nil ->
+        false
+    end
+  end
+
+  def do_block_for!(ast) do
+    case do_block_for(ast) do
+      {:ok, block} ->
+        block
+
+      nil ->
+        nil
+    end
+  end
+
+  defp do_block_for({_atom, _meta, arguments}) when is_list(arguments) do
+    do_block_for(arguments)
+  end
+
+  defp do_block_for(do: block) do
+    {:ok, block}
+  end
+
+  defp do_block_for(arguments) when is_list(arguments) do
+    Enum.find_value(arguments, &find_keyword(&1, :do))
+  end
+
+  defp do_block_for(_) do
+    nil
+  end
+
+  defp find_keyword(list, keyword) when is_list(list) do
+    if Keyword.has_key?(list, keyword) do
+      {:ok, list[keyword]}
+    else
+      nil
+    end
+  end
+
+  defp find_keyword(_, _), do: nil
 end
