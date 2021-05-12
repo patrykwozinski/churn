@@ -26,7 +26,7 @@ defmodule Churn.Execution do
     |> parse(config)
   end
 
-  defp parse(results, %Configuration{output_type: output_type}) when length(results) > 0 do
+  defp parse(results, config) when length(results) > 0 do
     max_times_changed =
       results
       |> Enum.map(& &1.times_changed)
@@ -42,7 +42,7 @@ defmodule Churn.Execution do
     |> Enum.map(fn result ->
       Result.with_score(result, max_times_changed, max_complexity)
     end)
-    |> Renderer.render(output_type)
+    |> Renderer.render(config.output_type)
   end
 
   defp parse(_results, _config), do: :ok
