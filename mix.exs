@@ -1,10 +1,12 @@
 defmodule Churn.MixProject do
   use Mix.Project
 
+  @version "0.1.0"
+
   def project do
     [
       app: :churn,
-      version: "0.1.0",
+      version: @version,
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
