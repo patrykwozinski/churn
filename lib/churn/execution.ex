@@ -5,6 +5,7 @@ defmodule Churn.Execution do
 
   alias Churn.Configuration
   alias Churn.File.Finder
+  alias Churn.Processor
 
   @spec run(Configuration.t()) :: :ok
   def run(%Configuration{
@@ -13,9 +14,7 @@ defmodule Churn.Execution do
         files_to_ignore: files_to_ignore
       }) do
     Finder.find(dirs_to_scan, exts, files_to_ignore)
-    |> Task.async_stream(fn file ->
-      nil
-    end)
+    |> Task.async_stream(&Processor.process/1)
 
     :ok
   end
