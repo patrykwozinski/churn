@@ -14,18 +14,19 @@ defmodule Churn.Execution do
         directories_to_scan: dirs_to_scan,
         file_extensions: exts,
         files_to_ignore: files_to_ignore,
-        commit_since: commit_since,
-        output_type: output_type
-      }) do
-    results =
-      Finder.find(dirs_to_scan, exts, files_to_ignore)
-      |> Stream.map(fn file ->
-        Processor.process(file, commit_since)
-      end)
-      |> Stream.filter(fn {status, _result} -> status == :ok end)
-      |> Stream.map(fn {:ok, result} -> result end)
-      |> Enum.to_list()
+        commit_since: commit_since
+      } = config) do
+    Finder.find(dirs_to_scan, exts, files_to_ignore)
+    |> Stream.map(fn file ->
+      Processor.process(file, commit_since)
+    end)
+    |> Stream.filter(fn {status, _result} -> status == :ok end)
+    |> Stream.map(fn {:ok, result} -> result end)
+    |> Enum.to_list()
+    |> parse(config)
+  end
 
+  defp parse(results, %Configuration{output_type: output_type}) when length(results) > 0 do
     max_times_changed =
       results
       |> Enum.map(& &1.times_changed)
@@ -42,7 +43,7 @@ defmodule Churn.Execution do
       Result.with_score(result, max_times_changed, max_complexity)
     end)
     |> Renderer.render(output_type)
-
-    :ok
   end
+
+  defp parse(_results, _config), do: :ok
 end
