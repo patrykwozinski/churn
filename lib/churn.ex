@@ -6,6 +6,7 @@ defmodule Churn do
   alias Churn.Configuration
   alias Churn.Execution
 
+  @spec run(list(any())) :: :ok
   def run(args) do
     args
     |> Configuration.build()
