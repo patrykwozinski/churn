@@ -4,7 +4,7 @@ defmodule Churn.Execution do
   """
 
   alias Churn.Configuration
-  alias Churn.FileFinder
+  alias Churn.File.Finder
 
   @spec run(Configuration.t()) :: :ok
   def run(%Configuration{
@@ -12,7 +12,7 @@ defmodule Churn.Execution do
         file_extensions: exts,
         files_to_ignore: files_to_ignore
       }) do
-    FileFinder.find(dirs_to_scan, exts, files_to_ignore)
+      Finder.find(dirs_to_scan, exts, files_to_ignore)
 
     :ok
   end

@@ -1,7 +1,9 @@
-defmodule Churn.FileFinder do
+defmodule Churn.File.Finder do
   @moduledoc false
 
-  @spec find([String.t()], [String.t()], [String.t()]) :: [String.t()]
+  alias Churn.File
+
+  @spec find([String.t()], [String.t()], [String.t()]) :: [File.t()]
   def find(paths, extensions, _files_to_ignore) do
     extensions = Enum.join(extensions, ",")
 
@@ -12,6 +14,9 @@ defmodule Churn.FileFinder do
       |> Path.join("*.{#{extensions}}")
       |> Path.wildcard()
       |> Enum.uniq()
+    end)
+    |> Enum.map(fn file_path ->
+      File.build(file_path)
     end)
   end
 end
