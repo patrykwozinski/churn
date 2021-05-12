@@ -14,7 +14,7 @@ defmodule Churn.Configuration do
     field(:files_to_ignore, list(String.t()))
   end
 
-  @spec build() :: t()
+  @spec build(list(any())) :: t()
   def build(args \\ []) when is_list(args) do
     min_score_to_show = Keyword.fetch!(args, :min_score_to_show)
     commit_since = Keyword.fetch!(args, :commit_since)
