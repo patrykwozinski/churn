@@ -1,4 +1,4 @@
-# Churn
+# Churn [![Build Status](https://github.com/patrykwozinski/churn/workflows/CI/badge.svg)](https://github.com/patrykwozinski/churn/actions) [![Hex pm](https://img.shields.io/hexpm/v/churn.svg?style=flat)](https://hex.pm/packages/churn)
 
 **Help discover a good refactoring candidates using cyclomatic complexity and frequency of editing files**
 
