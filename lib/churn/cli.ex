@@ -11,11 +11,19 @@ defmodule Churn.CLI do
     files_to_ignore: :string
   ]
 
+  @aliases [
+    ms: :min_score_to_show,
+    cs: :commit_since,
+    d: :directories_to_scan,
+    e: :file_extensions,
+    i: :files_to_ignore
+  ]
+
   @doc """
   Runs Churn with the given `args` and exits the process.
   """
   def main(args \\ []) do
-    {valid_arguments, _, _} = OptionParser.parse(args, strict: @strict_requirements)
+    {valid_arguments, _, _} = OptionParser.parse(args, aliases: @aliases, strict: @strict_requirements)
 
     valid_arguments
     |> Enum.map(fn
