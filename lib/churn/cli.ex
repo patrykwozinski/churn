@@ -12,8 +12,8 @@ defmodule Churn.CLI do
   ]
 
   @aliases [
-    ms: :min_score_to_show,
-    cs: :commit_since,
+    s: :min_score_to_show,
+    c: :commit_since,
     d: :directories_to_scan,
     e: :file_extensions,
     i: :files_to_ignore
