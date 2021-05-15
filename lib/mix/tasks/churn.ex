@@ -2,13 +2,13 @@ defmodule Mix.Tasks.Churn do
   use Mix.Task
 
   @shortdoc """
-  Run churn analysis of specified directories
+  Run churn analysis of specified directories\n\n
 
   Available options:
-  --min-score-to-show 1 [-s]
-  --commit-since "1 year ago" [-c]
-  --directories-to-scan "lib,test" [-d]
-  --file-extensions "ex,exs" [-e]
+  \n--min-score-to-show 1 [-s]
+  \n--commit-since "1 year ago" [-c]
+  \n--directories-to-scan "lib,test" [-d]
+  \n--file-extensions "ex,exs" [-e]
   """
   @moduledoc @shortdoc
 
