@@ -13,6 +13,10 @@ The results are displayed in a table:
 ![](asset/img/output.png)
 </p>
 
+## Implementations in other languages**
+* **ruby** [danmayer/churn](https://github.com/danmayer/churn)
+* **php** [bmitch/churn-php](https://github.com/bmitch/churn-php/)
+
 ## Installation
 
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed
