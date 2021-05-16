@@ -2,6 +2,12 @@
 
 **Help discover a good refactoring candidates using cyclomatic complexity and frequency of editing files**
 
+## Table of Contents
+* [What Is it?](#what-is-it)
+* [How to Use?](#how-to-use)
+* [How to Install?](#how-to-install)
+* [Similar Packages](#similar-packages)
+
 ## What is it?
 `churn` is a package that helps you identify `.ex` files in your project that could be good candidates for refactoring. It examines each Elixir file in the path it is provided and:
 * Checks how many commits it has.
@@ -11,11 +17,7 @@
 The results are displayed in a table:
 ![](asset/img/example.png)
 
-## Implementations in other languages**
-* **ruby** [danmayer/churn](https://github.com/danmayer/churn)
-* **php** [bmitch/churn-php](https://github.com/bmitch/churn-php/)
-
-## Flags
+## How to use
 You can use some of existing flags to precise Churn results
 ```sh
 --min-score-to-show (-s shortcut)
@@ -52,10 +54,8 @@ Example
 -i "lib/churn/hello_world.ex"
 ```
 
-## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `churn` to your list of dependencies in `mix.exs`:
+## How to install
+The package can be installed by adding `churn` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
@@ -65,7 +65,9 @@ def deps do
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/churn](https://hexdocs.pm/churn).
+Docs: [https://hexdocs.pm/churn](https://hexdocs.pm/churn).
 
+## Similar Packages
+* https://github.com/danmayer/churn (Ruby)
+* https://github.com/chad/turbulence (Ruby)
+* https://github.com/bmitch/churn-php (PHP)
