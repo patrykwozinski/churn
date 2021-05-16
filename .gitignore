@@ -27,3 +27,6 @@ churn-*.tar
 
 # Temporary files for e.g. tests
 /tmp
+
+# Ignore MacOS .DS_Store
+*.DS_Store
