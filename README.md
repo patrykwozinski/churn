@@ -15,6 +15,43 @@ The results are displayed in a table:
 * **ruby** [danmayer/churn](https://github.com/danmayer/churn)
 * **php** [bmitch/churn-php](https://github.com/bmitch/churn-php/)
 
+## Flags
+You can use some of existing flags to precise Churn results
+```sh
+--min-score-to-show (-s shortcut)
+
+Example:
+-s 2
+```
+
+```sh
+--commit-since (-c shortcut)
+
+Example:
+-c "2 months ago"
+```
+
+```sh
+--directories-to-scan (-d shortcut)
+
+Example:
+-d lib,test
+```
+
+```sh
+--file-extensions [-e shortcut]
+
+Example
+-e "ex,exs"
+```
+
+```sh
+--files-to-ignore [-i shortcut]
+
+Example
+-i "lib/churn/hello_world.ex"
+```
+
 ## Installation
 
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed
