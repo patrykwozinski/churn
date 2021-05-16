@@ -9,9 +9,7 @@
 * Creates a score based on these two values.
 
 The results are displayed in a table:
-<p style="text-align: center;">
 ![](asset/img/example.png)
-</p>
 
 ## Implementations in other languages**
 * **ruby** [danmayer/churn](https://github.com/danmayer/churn)
