@@ -56,7 +56,7 @@ Example
 ```
 
 ```sh
---configuration [-c shortcut]
+--config [-c shortcut]
 
 Example
 -C foo/bar.exs
