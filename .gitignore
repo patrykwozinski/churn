@@ -1,3 +1,6 @@
+# Churn binaries
+churn
+
 # The directory Mix will write compiled artifacts to.
 /_build/
 
@@ -21,7 +24,6 @@ erl_crash.dump
 
 # Ignore package tarball (built via "mix hex.build").
 churn-*.tar
-
 
 # Temporary files for e.g. tests
 /tmp
