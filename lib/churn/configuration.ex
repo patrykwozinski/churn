@@ -4,6 +4,8 @@ defmodule Churn.Configuration do
   It's used for every run.
   """
 
+  @config_file ".churn.exs"
+
   use TypedStruct
 
   typedstruct enforce: true do
@@ -15,21 +17,16 @@ defmodule Churn.Configuration do
     field(:files_to_ignore, [String.t()])
   end
 
-  @default_minimum_score_to_show 0.1
-  @default_commit_since "1 year ago"
-  @default_output_type :console
-  @default_directories_to_scan ["lib"]
-  @default_file_extensions ["ex"]
-  @default_files_to_ignore []
-
   @spec build([any()]) :: t()
   def build(args \\ []) when is_list(args) do
-    min_score_to_show = Keyword.get(args, :min_score_to_show, @default_minimum_score_to_show)
-    commit_since = Keyword.get(args, :commit_since, @default_commit_since)
-    output_type = Keyword.get(args, :output_type, @default_output_type)
-    directories_to_scan = Keyword.get(args, :directories_to_scan, @default_directories_to_scan)
-    file_extensions = Keyword.get(args, :file_extensions, @default_file_extensions)
-    files_to_ignore = Keyword.get(args, :files_to_ignore, @default_files_to_ignore)
+    default_config = load_default_config()
+
+    min_score_to_show = fetch(args, :min_score_to_show, default_config)
+    commit_since = fetch(args, :commit_since, default_config)
+    output_type = fetch(args, :output_type, default_config)
+    directories_to_scan = fetch(args, :directories_to_scan, default_config)
+    file_extensions = fetch(args, :file_extensions, default_config)
+    files_to_ignore = fetch(args, :files_to_ignore, default_config)
 
     %__MODULE__{
       min_score_to_show: min_score_to_show,
@@ -39,5 +36,17 @@ defmodule Churn.Configuration do
       file_extensions: file_extensions,
       files_to_ignore: files_to_ignore
     }
+  end
+
+  defp load_default_config do
+    {configuration, _} = Code.eval_file(@config_file)
+
+    Map.to_list(configuration)
+  end
+
+  defp fetch(args, key, defaults) do
+    default_value = Keyword.fetch!(defaults, key)
+
+    Keyword.get(args, key, default_value)
   end
 end
