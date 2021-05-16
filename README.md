@@ -3,7 +3,7 @@
 **Help discover a good refactoring candidates using cyclomatic complexity and frequency of editing files**
 
 <p style="text-align: center;">
-  !["Example usage of Churn"](asset/img/example.png "Example usage of Churn")
+  ![Example usage of Churn](asset/img/example.png)
 </p>
 
 ## Installation
