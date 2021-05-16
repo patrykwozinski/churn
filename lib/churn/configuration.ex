@@ -24,6 +24,8 @@ defmodule Churn.Configuration do
 
   @spec build([any()]) :: t()
   def build(args \\ []) when is_list(args) do
+    _default_config = load_default_config()
+
     min_score_to_show = Keyword.get(args, :min_score_to_show, @default_minimum_score_to_show)
     commit_since = Keyword.get(args, :commit_since, @default_commit_since)
     output_type = Keyword.get(args, :output_type, @default_output_type)
@@ -39,5 +41,9 @@ defmodule Churn.Configuration do
       file_extensions: file_extensions,
       files_to_ignore: files_to_ignore
     }
+  end
+
+  defp load_default_config do
+    File.read!(".churn.exs") |> Code.require_file() |> IO.inspect()
   end
 end
