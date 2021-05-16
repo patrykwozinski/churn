@@ -9,6 +9,7 @@ defmodule Mix.Tasks.Churn do
   \n--commit-since "1 year ago" [-c]
   \n--directories-to-scan "lib,test" [-d]
   \n--file-extensions "ex,exs" [-e]
+  \n--files-to-ignore "lib/churn/testing.ex" [-i]
   """
   @moduledoc @shortdoc
 
