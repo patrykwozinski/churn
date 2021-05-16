@@ -14,7 +14,7 @@ defmodule Churn.File.Finder do
       |> Path.join("*.{#{extensions}}")
       |> Path.wildcard()
       |> Enum.uniq()
-      |> Enum.reject(& Enum.member?(files_to_ignore, &1))
+      |> Enum.reject(&Enum.member?(files_to_ignore, &1))
     end)
     |> Enum.map(&File.build/1)
   end

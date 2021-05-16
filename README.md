@@ -28,10 +28,10 @@ Example:
 ```
 
 ```sh
---commit-since (-c shortcut)
+--commit-since (-t shortcut)
 
 Example:
--c "2 months ago"
+-t "2 months ago"
 ```
 
 ```sh
@@ -53,6 +53,13 @@ Example
 
 Example
 -i "lib/churn/hello_world.ex"
+```
+
+```sh
+--configuration [-c shortcut]
+
+Example
+-C foo/bar.exs
 ```
 
 ## How to install

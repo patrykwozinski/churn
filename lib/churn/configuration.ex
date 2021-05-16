@@ -4,7 +4,7 @@ defmodule Churn.Configuration do
   It's used for every run.
   """
 
-  @config_file ".churn.exs"
+  @default_config_file ".churn.exs"
 
   use TypedStruct
 
@@ -19,14 +19,17 @@ defmodule Churn.Configuration do
 
   @spec build([any()]) :: t()
   def build(args \\ []) when is_list(args) do
-    default_config = load_default_config()
+    config =
+      args
+      |> Keyword.get(:config, @default_config_file)
+      |> load_default_config()
 
-    min_score_to_show = fetch(args, :min_score_to_show, default_config)
-    commit_since = fetch(args, :commit_since, default_config)
-    output_type = fetch(args, :output_type, default_config)
-    directories_to_scan = fetch(args, :directories_to_scan, default_config)
-    file_extensions = fetch(args, :file_extensions, default_config)
-    files_to_ignore = fetch(args, :files_to_ignore, default_config)
+    min_score_to_show = fetch(args, :min_score_to_show, config)
+    commit_since = fetch(args, :commit_since, config)
+    output_type = fetch(args, :output_type, config)
+    directories_to_scan = fetch(args, :directories_to_scan, config)
+    file_extensions = fetch(args, :file_extensions, config)
+    files_to_ignore = fetch(args, :files_to_ignore, config)
 
     %__MODULE__{
       min_score_to_show: min_score_to_show,
@@ -38,8 +41,10 @@ defmodule Churn.Configuration do
     }
   end
 
-  defp load_default_config do
-    {configuration, _} = Code.eval_file(@config_file)
+  defp load_default_config(config_file) do
+    unless File.exists?(config_file), do: raise("config file don't exist")
+
+    {configuration, _} = Code.eval_file(config_file)
 
     Map.to_list(configuration)
   end
