@@ -7,6 +7,7 @@
 * [How to Use?](#how-to-use)
 * [How to Install?](#how-to-install)
 * [Similar Packages](#similar-packages)
+* [How to release?](HOW_TO_RELEASE.md)
 
 ## What is it?
 `churn` is a package that helps you identify `.ex` files in your project that could be good candidates for refactoring. It examines each Elixir file in the path it is provided and:
