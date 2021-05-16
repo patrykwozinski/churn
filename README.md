@@ -2,8 +2,15 @@
 
 **Help discover a good refactoring candidates using cyclomatic complexity and frequency of editing files**
 
+## What is it?
+`churn` is a package that helps you identify `.ex` files in your project that could be good candidates for refactoring. It examines each Elixir file in the path it is provided and:
+* Checks how many commits it has.
+* Calculates the cyclomatic complexity.
+* Creates a score based on these two values.
+
+The results are displayed in a table:
 <p style="text-align: center;">
-  ![Example usage of Churn](asset/img/example.png)
+![](asset/img/output.png)
 </p>
 
 ## Installation
