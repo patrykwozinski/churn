@@ -1,5 +1,5 @@
 defmodule Churn.File.FinderTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
 
   alias Churn.File
   alias Churn.File.Finder

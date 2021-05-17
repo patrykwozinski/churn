@@ -1,5 +1,5 @@
 defmodule Churn.Processor.ResultTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
 
   alias Churn.File
   alias Churn.Processor.Result
