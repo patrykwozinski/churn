@@ -23,9 +23,10 @@ defmodule Churn.File.FinderTest do
     # [Given] parameters for root path, all exts and all files ignored
     path = fixtures_root_path()
     extensions = ["md", "txt"]
+
     ignores = [
       Path.join([path, "test.md"]),
-      Path.join([path, "test.txt"]),
+      Path.join([path, "test.txt"])
     ]
 
     # [When] seeking files

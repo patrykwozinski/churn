@@ -30,11 +30,12 @@ defmodule Churn.Processor.ResultTest do
     max_complexity = 3
 
     # [When] calculating score
-    result_with_score = Result.with_score(
-      result,
-      max_times_changed,
-      max_complexity
-    )
+    result_with_score =
+      Result.with_score(
+        result,
+        max_times_changed,
+        max_complexity
+      )
 
     # [Then] score equals normalized distance from "top right" corner
     assert result_with_score.score == 1.0
