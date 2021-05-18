@@ -74,7 +74,7 @@ def deps do
 end
 ```
 
-Copy `.churn.exs` file:
+Copy and configure the `.churn.exs` file:
 ```elixir 
 %{
   #
