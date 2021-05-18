@@ -1,7 +1,7 @@
 defmodule Churn.MixProject do
   use Mix.Project
 
-  @version "0.1.6"
+  @version "0.1.7"
 
   def project do
     [
@@ -41,7 +41,7 @@ defmodule Churn.MixProject do
   defp docs do
     [
       main: "readme",
-      extras: ["README.md"]
+      extras: ["README.md", "HOW_TO_RELEASE.md"]
     ]
   end
 
