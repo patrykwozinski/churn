@@ -68,7 +68,7 @@ The package can be installed by adding `churn` to your list of dependencies in `
 ```elixir
 def deps do
   [
-    {:churn, "~> 0.1"}
+    {:churn, "~> 0.1", only: :dev}
   ]
 end
 ```
