@@ -42,7 +42,8 @@ defmodule Churn.Configuration do
   end
 
   defp load_default_config(config_file) do
-    unless File.exists?(config_file), do: raise("config file don't exist")
+    unless File.exists?(config_file),
+      do: raise("config file don't exist - please copy .churn.exs into your project")
 
     {configuration, _} = Code.eval_file(config_file)
 
