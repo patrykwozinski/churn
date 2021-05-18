@@ -63,14 +63,50 @@ Example
 ```
 
 ## How to install
-The package can be installed by adding `churn` to your list of dependencies in `mix.exs`:
+The package can be installed by adding `churn` to your list of dependencies in `mix.exs` and then you need to copy `.churn.exs` [file](.churn.exs) into your project.
 
+Update your `mix.exs`:
 ```elixir
 def deps do
   [
     {:churn, "~> 0.1", only: :dev}
   ]
 end
+```
+
+Copy `.churn.exs` file:
+```elixir 
+%{
+  #
+  # Minimum score to show in a table.
+  #
+  min_score_to_show: 0,
+
+  #
+  # Provide a human readable time to use git-log history for churn.
+  #
+  commit_since: "1 year ago",
+
+  #
+  # Describes output type for the Churn results
+  #
+  output_type: :console,
+
+  #
+  # Where to find a files to analyse and seeking for refactoring candidates.
+  #
+  directories_to_scan: ["lib"],
+
+  #
+  # Which extensions should be used for seeking project files.
+  #
+  file_extensions: ["ex", "exs"],
+
+  #
+  # Determines files should we ignore and protect from analysis.
+  #
+  files_to_ignore: []
+}
 ```
 
 Docs: [https://hexdocs.pm/churn](https://hexdocs.pm/churn).
