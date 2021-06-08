@@ -1,6 +1,6 @@
 # Churn [![Build Status](https://github.com/patrykwozinski/churn/workflows/CI/badge.svg)](https://github.com/patrykwozinski/churn/actions) [![Hex pm](https://img.shields.io/hexpm/v/churn.svg?style=flat)](https://hex.pm/packages/churn)
 
-**Discover good refactoring candidates by identifying frequently-edited files with high cyclomatic complexity**
+**Discover refactoring candidates by identifying the most frequently-edited files with the highest cyclomatic complexity**
 
 ## Table of Contents
 * [What Is it?](#what-is-it)
