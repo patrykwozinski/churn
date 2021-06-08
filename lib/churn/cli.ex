@@ -4,7 +4,7 @@ defmodule Churn.CLI do
   """
 
   @strict_requirements [
-    min_score_to_show: :integer,
+    min_score_to_show: :float,
     commit_since: :string,
     directories_to_scan: :string,
     file_extensions: :string,
