@@ -1,11 +1,13 @@
 %{
   #
-  # Minimum score to show in a table.
+  # Minimum score to show in the output table.
   #
   min_score_to_show: 0,
 
   #
-  # Provide a human readable time to use git-log history for churn.
+  # Specify when to look for commits. (This string is passed to `git rev-list
+  # --since [value]`, so any human-readable string it understands is
+  # acceptable.)
   #
   commit_since: "1 year ago",
 
@@ -15,12 +17,12 @@
   output_type: :console,
 
   #
-  # Where to find a files to analyse and seeking for refactoring candidates.
+  # Where to find files to analyse and look for refactoring candidates.
   #
   directories_to_scan: ["lib"],
 
   #
-  # Which extensions should be used for seeking project files.
+  # Which extensions should be used for seeking files to analyse.
   #
   file_extensions: ["ex", "exs"],
 
