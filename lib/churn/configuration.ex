@@ -9,7 +9,7 @@ defmodule Churn.Configuration do
   use TypedStruct
 
   typedstruct enforce: true do
-    field(:min_score_to_show, pos_integer())
+    field(:min_score_to_show, float())
     field(:commit_since, String.t())
     field(:output_type, :console)
     field(:directories_to_scan, [String.t()])
