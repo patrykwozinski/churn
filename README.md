@@ -6,6 +6,7 @@
 * [What Is it?](#what-is-it)
 * [How to Use?](#how-to-use)
 * [How to Install?](#how-to-install)
+* [Understanding Churn Scores](#understanding-churn-scores)
 * [Similar Packages](#similar-packages)
 
 ## What is it?
@@ -115,6 +116,19 @@ Copy and configure the `.churn.exs` file:
   files_to_ignore: []
 }
 ```
+
+## Understanding Churn Scores
+
+Churn will always identify top-scoring files.
+Also, all scores produced by Churn are **relative to the project**.
+
+For example, in a newly-generated Mix project, with a simple `HelloWorld` module, that file will be scored `1.0` and be listed as the sole refactoring candidate.
+In any real project, the same module would have a very low score.
+
+On the other hand, in a project where every module is complex and frequently-modified, some modules may receive low scores which would receive high scores if they were part of a different project.
+
+When you see the results Churn produces, consider them the most likely refactoring candidates **for this project**.
+Whether they actually need refactoring is up to you.
 
 Docs: [https://hexdocs.pm/churn](https://hexdocs.pm/churn).
 
