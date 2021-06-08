@@ -1,16 +1,16 @@
 # Churn [![Build Status](https://github.com/patrykwozinski/churn/workflows/CI/badge.svg)](https://github.com/patrykwozinski/churn/actions) [![Hex pm](https://img.shields.io/hexpm/v/churn.svg?style=flat)](https://hex.pm/packages/churn)
 
-**Help discover a good refactoring candidates using cyclomatic complexity and frequency of editing files**
+**Discover refactoring candidates by identifying the most frequently-edited files with the highest cyclomatic complexity**
 
 ## Table of Contents
 * [What Is it?](#what-is-it)
 * [How to Use?](#how-to-use)
 * [How to Install?](#how-to-install)
+* [Understanding Churn Scores](#understanding-churn-scores)
 * [Similar Packages](#similar-packages)
-* [How to release?](HOW_TO_RELEASE.md)
 
 ## What is it?
-`churn` is a package that helps you identify `.ex` files in your project that could be good candidates for refactoring. It examines each Elixir file in the path it is provided and:
+`churn` is a package that helps you identify `.ex` and `.exs` files in your project that could be good candidates for refactoring. It examines each Elixir file in the path it is provided and:
 * Checks how many commits it has.
 * Calculates the cyclomatic complexity.
 * Creates a score based on these two values.
@@ -19,19 +19,23 @@ The results are displayed in a table:
 ![](asset/img/example.png)
 
 ## How to use
-You can use some of existing flags to precise Churn results
+
+After installing, run `mix churn`.
+
+You can use these options to customize how Churn runs:
+
 ```sh
 --min-score-to-show (-s shortcut)
 
 Example:
--s 2
+mix churn -s 2
 ```
 
 ```sh
 --commit-since (-t shortcut)
 
 Example:
--t "2 months ago"
+mix churn -t "2 months ago"
 ```
 
 ```sh
@@ -45,25 +49,27 @@ Example:
 --file-extensions [-e shortcut]
 
 Example
--e "ex,exs"
+mix churn -e "ex,exs"
 ```
 
 ```sh
 --files-to-ignore [-i shortcut]
 
 Example
--i "lib/churn/hello_world.ex"
+mix churn -i "lib/churn/hello_world.ex"
 ```
 
 ```sh
 --config [-c shortcut]
 
 Example
--C foo/bar.exs
+mix churn -c foo/bar.exs
 ```
 
 ## How to install
-The package can be installed by adding `churn` to your list of dependencies in `mix.exs` and then you need to copy `.churn.exs` [file](.churn.exs) into your project.
+
+The package can be installed by adding `churn` to your list of dependencies in `mix.exs` as follows.
+You also need to copy [`.churn.exs`](.churn.exs) into your project.
 
 Update your `mix.exs`:
 ```elixir
@@ -78,12 +84,14 @@ Copy and configure the `.churn.exs` file:
 ```elixir 
 %{
   #
-  # Minimum score to show in a table.
+  # Minimum score to show in the output table.
   #
   min_score_to_show: 0,
 
   #
-  # Provide a human readable time to use git-log history for churn.
+  # Specify when to look for commits. (This string is passed to `git rev-list
+  # --since [value]`, so any human-readable string it understands is
+  # acceptable.)
   #
   commit_since: "1 year ago",
 
@@ -93,12 +101,12 @@ Copy and configure the `.churn.exs` file:
   output_type: :console,
 
   #
-  # Where to find a files to analyse and seeking for refactoring candidates.
+  # Where to find files to analyse and look for refactoring candidates.
   #
   directories_to_scan: ["lib"],
 
   #
-  # Which extensions should be used for seeking project files.
+  # Which extensions should be used for seeking files to analyse.
   #
   file_extensions: ["ex", "exs"],
 
@@ -108,6 +116,19 @@ Copy and configure the `.churn.exs` file:
   files_to_ignore: []
 }
 ```
+
+## Understanding Churn Scores
+
+Churn will always identify top-scoring files.
+Also, all scores produced by Churn are **relative to the project**.
+
+For example, in a newly-generated Mix project, with a simple `HelloWorld` module, that file will be scored `1.0` and be listed as the sole refactoring candidate.
+In any real project, the same module would have a very low score.
+
+On the other hand, in a project where every module is complex and frequently-modified, some modules may receive low scores which would receive high scores if they were part of a different project.
+
+When you see the results Churn produces, consider them the most likely refactoring candidates **for this project**.
+Whether they actually need refactoring is up to you.
 
 Docs: [https://hexdocs.pm/churn](https://hexdocs.pm/churn).
 
