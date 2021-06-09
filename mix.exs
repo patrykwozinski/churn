@@ -1,14 +1,14 @@
 defmodule Churn.MixProject do
   use Mix.Project
 
-  @version "0.1.8"
+  @version "0.1.9"
 
   def project do
     [
       app: :churn,
       description: "Churn supports finding refactoring candidates in your code",
       version: @version,
-      elixir: "~> 1.7",
+      elixir: "~> 1.8",
       escript: [main_module: Churn.CLI],
       start_permanent: Mix.env() == :prod,
       deps: deps(),
