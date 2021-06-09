@@ -8,7 +8,7 @@ defmodule Churn.MixProject do
       app: :churn,
       description: "Churn supports finding refactoring candidates in your code",
       version: @version,
-      elixir: "~> 1.11",
+      elixir: "~> 1.7",
       escript: [main_module: Churn.CLI],
       start_permanent: Mix.env() == :prod,
       deps: deps(),

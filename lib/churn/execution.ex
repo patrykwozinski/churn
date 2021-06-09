@@ -44,7 +44,7 @@ defmodule Churn.Execution do
       |> Enum.max()
 
     results
-    |> Enum.sort_by(&Result.get_priority/1, :desc)
+    |> Enum.sort_by(&Result.get_priority/1)
     |> Enum.map(fn result ->
       Result.with_score(result, max_times_changed, max_complexity)
     end)
