@@ -1,5 +1,9 @@
 {
   "extends": [
     "config:base"
-  ]
+  ],
+  "rangeStrategy": "bump",
+  "dependencyDashboard": true,
+  "stabilityDays": 7,
+  "prCreation": "not-pending"
 }
