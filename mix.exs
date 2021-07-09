@@ -34,7 +34,7 @@ defmodule Churn.MixProject do
       {:dialyxir, "~> 1.1", only: [:dev], runtime: false},
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
       {:table_rex, "~> 3.1.1"},
-      {:typed_struct, "~> 0.1"}
+      {:typed_struct, "~> 0.2"}
     ]
   end
 
