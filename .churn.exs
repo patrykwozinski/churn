@@ -19,7 +19,7 @@
   #
   # Where to find files to analyse and look for refactoring candidates.
   #
-  directories_to_scan: ["lib"],
+  directories_to_scan: ["lib", "apps/*/lib"],
 
   #
   # Which extensions should be used for seeking files to analyse.

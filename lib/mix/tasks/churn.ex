@@ -7,7 +7,7 @@ defmodule Mix.Tasks.Churn do
   Available options:
   \n--min-score-to-show 1 [-s]
   \n--commit-since "1 year ago" [-t]
-  \n--directories-to-scan "lib,test" [-d]
+  \n--directories-to-scan "lib,apps/*/lib" [-d]
   \n--file-extensions "ex,exs" [-e]
   \n--files-to-ignore "lib/churn/testing.ex" [-i]
   \n--config "foo/bar.exs" [-c]
