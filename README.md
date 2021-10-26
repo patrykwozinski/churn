@@ -1,7 +1,6 @@
 # Churn
 
 [![Build Status](https://github.com/patrykwozinski/churn/workflows/CI/badge.svg)](https://github.com/patrykwozinski/churn/actions)
-[![Hex pm](https://img.shields.io/hexpm/v/churn.svg?style=flat)](https://hex.pm/packages/churn)
 [![Module Version](https://img.shields.io/hexpm/v/churn.svg)](https://hex.pm/packages/churn)
 [![Hex Docs](https://img.shields.io/badge/hex-docs-lightgreen.svg)](https://hexdocs.pm/churn/)
 [![Total Download](https://img.shields.io/hexpm/dt/churn.svg)](https://hex.pm/packages/churn)
