@@ -1,4 +1,12 @@
-# Churn [![Build Status](https://github.com/patrykwozinski/churn/workflows/CI/badge.svg)](https://github.com/patrykwozinski/churn/actions) [![Hex pm](https://img.shields.io/hexpm/v/churn.svg?style=flat)](https://hex.pm/packages/churn)
+# Churn
+
+[![Build Status](https://github.com/patrykwozinski/churn/workflows/CI/badge.svg)](https://github.com/patrykwozinski/churn/actions)
+[![Hex pm](https://img.shields.io/hexpm/v/churn.svg?style=flat)](https://hex.pm/packages/churn)
+[![Module Version](https://img.shields.io/hexpm/v/churn.svg)](https://hex.pm/packages/churn)
+[![Hex Docs](https://img.shields.io/badge/hex-docs-lightgreen.svg)](https://hexdocs.pm/churn/)
+[![Total Download](https://img.shields.io/hexpm/dt/churn.svg)](https://hex.pm/packages/churn)
+[![License](https://img.shields.io/hexpm/l/churn.svg)](https://github.com/patrykwozinski/churn/blob/master/LICENSE.md)
+[![Last Updated](https://img.shields.io/github/last-commit/patrykwozinski/churn.svg)](https://github.com/patrykwozinski/churn/commits/master)
 
 **Discover refactoring candidates by identifying the most frequently-edited files with the highest cyclomatic complexity**
 
@@ -81,7 +89,7 @@ end
 ```
 
 Copy and configure the `.churn.exs` file:
-```elixir 
+```elixir
 %{
   #
   # Minimum score to show in the output table.
@@ -136,3 +144,10 @@ Docs: [https://hexdocs.pm/churn](https://hexdocs.pm/churn).
 * https://github.com/danmayer/churn (Ruby)
 * https://github.com/chad/turbulence (Ruby)
 * https://github.com/bmitch/churn-php (PHP)
+
+## Copyright and License
+
+Copyright (c) 2021 Patryk Woziński
+
+This work is free. You can redistribute it and/or modify it under the
+terms of the MIT License. See the [LICENSE.md](./LICENSE.md) file for more details.

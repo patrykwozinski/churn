@@ -1,6 +1,7 @@
 defmodule Churn.MixProject do
   use Mix.Project
 
+  @source_url "https://github.com/patrykwozinski/churn"
   @version "0.1.10"
 
   def project do
@@ -40,8 +41,15 @@ defmodule Churn.MixProject do
 
   defp docs do
     [
+      extras: [
+        "HOW_TO_RELEASE.md": [title: "How to Release"],
+        "LICENSE.md": [title: "License"],
+        "README.md": [title: "Overview"]
+      ],
       main: "readme",
-      extras: ["README.md", "HOW_TO_RELEASE.md"]
+      source_url: @source_url,
+      source_ref: "v#{@version}",
+      formatters: ["html"]
     ]
   end
 
@@ -49,7 +57,10 @@ defmodule Churn.MixProject do
     [
       files: ~w(lib .formatter.exs mix.exs README*),
       licenses: ["MIT"],
-      links: %{"GitHub" => "https://github.com/patrykwozinski/churn"}
+      links: %{
+        "Changelog" => "#{@source_url}/commits/master",
+        "GitHub" => @source_url
+      }
     ]
   end
 end
